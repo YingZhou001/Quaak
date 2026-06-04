@@ -111,14 +111,14 @@ Run directly from FASTA:
 bash src/quaak.sh -k ref.kmer.fa.gz -r ref.fa.gz -q query.fa.gz -o test.out
 ```
 
-Compute the path files from fasta file
+Compute the path file from fasta file
 
 ```bash
 src/kmer-C-ult/kmer-map ref.kmer.fa.gz ref.fa.gz | gzip -c > ref.path.gz
 src/kmer-C-ult/kmer-map ref.kmer.fa.gz query.fa.gz | gzip -c > query.path.gz
 ```
 
-Compute the path files from agc file
+Compute the path file from agc file
 
 ```bash
 agc getset 100000_CHM13.pri human579.agc \
@@ -135,7 +135,7 @@ bash src/quaak.sh -r ref.path.gz -q query.path.gz -o test.out
 ```
 
 
-Run directly from precomputed ref path file and query FASTA files:
+Run directly from precomputed ref path file and query FASTA file:
 
 ```bash
 bash src/quaak.sh -k ref.kmer.fa.gz -r ref.path.gz -q query.fa.gz -o test.out
@@ -150,7 +150,7 @@ bash src/quaak.sh \
   --blockcut 500000,10000 \
   --taucut 0.9 \
   --svcut 500000,100 \
-  --cytobands hg38.cytoBand.bed
+  --cytobands src/block-panel-plot/chm13v2.0_cytobands_allchrs.bed
 ```
 
 [↑ back to top](#contents)
