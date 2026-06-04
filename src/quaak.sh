@@ -290,7 +290,7 @@ if ${run_plot_sv}; then
   if [[ ${CYTOBANDS} == unset ]]; then
     ${mpp} ${block_file} ${overall_ref_pdf} --ref-centric --one-page --strand ${sel_ctgs}
     ${mpp} ${block_file} ${overall_ctg_pdf} --ref-centric --one-plot --strand ${sel_ctgs}
-  #else
+  else
     ${mpp} ${block_file} ${overall_ref_pdf} --ref-centric --one-page --strand ${sel_ctgs} --cytobands ${CYTOBANDS}
     ${mpp} ${block_file} ${overall_ctg_pdf} --ref-centric --one-plot --strand ${sel_ctgs} --cytobands ${CYTOBANDS}
   fi
