@@ -18,6 +18,7 @@ It expands idea of single-copy genes to unique k-mers to evaluate the assembly c
 Naturally, with paired unique k-mers between reference and query genome, synteny blocks can be construct to identify large structure variations and assembly errors.
 Limited by the k-mer construction process, QUAAK can only be applied to human assembly for now.
 
+
 Cite: TBD
 
 [↑ back to top](#contents)
@@ -101,7 +102,7 @@ agc getset 100000_CHM13.pri human579.agc | gzip -c > ref.fa.gz
 agc getset 200001_HG002.pat human579.agc | gzip -c > query.fa.gz
 ```
 
-Download the reference unique k-mer set (`ref.kmer.fa.gz`) from TBD.
+Download the reference unique k-mer set (`sel-500.kmer.fa.gz`) from https://zenodo.org/records/20535064 and save as 'ref.kmer.fa.gz'.
 
 
 Run directly from FASTA:
@@ -110,12 +111,22 @@ Run directly from FASTA:
 bash src/quaak.sh -k ref.kmer.fa.gz -r ref.fa.gz -q query.fa.gz -o test.out
 ```
 
-Compute the path files
+Compute the path files from fasta file
 
 ```bash
 src/kmer-C-ult/kmer-map ref.kmer.fa.gz ref.fa.gz | gzip -c > ref.path.gz
 src/kmer-C-ult/kmer-map ref.kmer.fa.gz query.fa.gz | gzip -c > query.path.gz
 ```
+
+Compute the path files from agc file
+
+```bash
+agc getset 100000_CHM13.pri human579.agc \
+  | src/kmer-C-ult/kmer-map ref.kmer.fa.gz - | gzip -c > ref.path.gz
+agc getset 200001_HG002.pat human579.agc \
+  | src/kmer-C-ult/kmer-map ref.kmer.fa.gz - | gzip -c > query.path.gz
+```
+
 
 Run directly from precomputed path files:
 
